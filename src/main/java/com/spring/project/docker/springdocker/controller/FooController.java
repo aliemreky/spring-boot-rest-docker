@@ -20,4 +20,10 @@ public class FooController {
 
         return fooService.welcomeDocker();
     }
+
+    @RequestMapping(value = "/welcome-redis-docker", method = RequestMethod.GET)
+    public Map<String, String> welcomeDockerRedisController() {
+
+        return fooService.welcomeDockerRedis();
+    }
 }

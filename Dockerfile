@@ -1,12 +1,11 @@
-#JDK
-FROM adoptopenjdk:8-jre-hotspot
+#JAVA JDK
+FROM openjdk:8
 
-#Project Structure and Extract Jar
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} springdocker.jar
+# copy jar in target to put the file in container usr/src folder
+ADD ./target/spring-docker-0.0.1-SNAPSHOT.jar /usr/src/spring-docker-0.0.1-SNAPSHOT.jar
 
-#Port
-EXPOSE 9980
+# Set Workspace Location
+WORKDIR usr/src
 
-#Start Project
-ENTRYPOINT ["java","-jar","/springdocker.jar"]
+# Run Command
+ENTRYPOINT ["java","-jar", "spring-docker-0.0.1-SNAPSHOT.jar"]
